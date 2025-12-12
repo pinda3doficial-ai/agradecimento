@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ Seu Sorriso é Nossa Missão - França Odontologia</title>
+    <style>
+        /* Estilos Adaptados para o tema Odontologia/Carinho (Tons de Azul e Dourado Natalino) */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #fce4ec; /* Rosa/Pérola Suave (Toque de Carinho) */
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            width: 100%;
+            margin: 20px;
+            animation: fadeIn 1s ease-in-out;
+            border: 3px solid #005f73; /* Azul Escuro Institucional */
+        }
+        #mensagem {
+            font-size: 1.6em;
+            color: #005f73; /* Azul Escuro Forte */
+            margin-top: 25px;
+            margin-bottom: 25px;
+            font-style: italic;
+            line-height: 1.5;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        h1 {
+            color: #0a9396; /* Azul Água Institucional */
+            margin-bottom: 5px;
+            font-size: 2em;
+        }
+        .day-indicator {
+            color: #e9d8a6; /* Dourado (Toque de Natal/Fim de Ano) */
+            font-weight: bold;
+            margin-top: 10px;
+            font-size: 1em;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        small {
+            color: #424242;
+            display: block;
+            margin-top: 15px;
+        }
+        .clinic-name {
+            font-weight: bold;
+            color: #005f73;
+            margin-top: 10px;
+            font-size: 1.1em;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🌟 Sua Dose Diária de Gratidão 🌟</h1>
+    <div class="day-indicator" id="dia-do-ano">Carregando mensagem...</div>
+    <p id="mensagem">Aguarde, sua mensagem de agradecimento está chegando...</p>
+    <div class="clinic-name">_Com carinho, da sua equipe França Odontologia_</div>
+    <small>Seu sorriso é o nosso maior presente de Natal!</small>
+</div>
+
+<script>
+    
+    // ====================================================================
+    // 🚩 PASSO 1: EDITE O NOME AQUI! 🚩
+    // Insira o nome do paciente, ou "Querido(a) Paciente" se for genérico
+    // ====================================================================
+    const nomeDoPresenteado = "Querida Glória"; 
+    // ====================================================================
+
+    // --- 2. A LISTA DE FRASES (365) - FRANÇA ODONTOLOGIA ---
+    const frasesOdontologia = [
+        "Agradecemos profundamente a sua confiança em nosso trabalho. Seu sorriso é a nossa motivação diária.", // Dia 1
+        "Que este novo ano traga saúde, prosperidade e muitos motivos para você sorrir sem medo.", // Dia 2
+        "Mais do que cuidar dos seus dentes, nossa missão é cuidar da sua autoestima e bem-estar.", // Dia 3
+        "Lembre-se: um sorriso saudável é o seu cartão de visitas mais valioso. Cuide dele com carinho!", // Dia 4
+        "Sua adesão ao tratamento é essencial. Parabéns pelo seu empenho na busca pela saúde bucal!", // Dia 5
+        "Obrigado por nos permitir fazer parte da sua história de sucesso e confiança.", // Dia 6
+        "Nesta época de luz, desejamos que seu sorriso brilhe mais do que as estrelas de Natal.", // Dia 7
+        "A França Odontologia valoriza a sua presença. É um privilégio cuidar de você.", // Dia 8
+        "Invista em você. O seu sorriso é um reflexo direto do seu autocuidado.", // Dia 9
+        "Nossa gratidão por cada indicação. Saber que você confia em nosso trabalho nos move.", // Dia 10
+        "Desejamos que o seu dia seja tão radiante e positivo quanto o seu sorriso pós-tratamento.", // Dia 11
+        "Pequenos cuidados diários levam a grandes resultados. Você está indo muito bem!", // Dia 12
+        "Seu feedback é fundamental. Obrigado por nos ajudar a crescer e a sermos melhores.", // Dia 13
+        "Um sorriso confiante abre portas e transforma vidas. Estamos aqui para garantir o seu.", // Dia 14
+        "Que o novo ano lhe devolva em dobro toda a dedicação que você tem com a sua saúde.", // Dia 15
+        "Acreditamos no poder transformador de um sorriso. Você é a nossa inspiração!", // Dia 16
+        "Obrigado por escolher a França Odontologia para ser sua aliada nesta jornada de saúde.", // Dia 17
+        "A maior alegria de nossa equipe é ver a sua satisfação ao final de cada procedimento.", // Dia 18
+        "Que cada dia seja um novo motivo para você celebrar a vida com um sorriso no rosto.", // Dia 19
+        "A França Odontologia deseja a você um final de ano cheio de paz e momentos felizes.", // Dia 20
+        "A sua saúde bucal é nossa prioridade. Conte sempre com o nosso profissionalismo e carinho.", // Dia 21
+        "Lembre-se de agendar sua consulta de rotina! A prevenção é o segredo do sorriso eterno.", // Dia 22
+        "Você é mais que um paciente, é parte da família França Odontologia. Bem-vindo(a) sempre!", // Dia 23
+        "Que o Natal renove a sua fé na vida e a sua vontade de sorrir para o mundo.", // Dia 24
+        "O presente mais valioso que você pode nos dar é a sua confiança. Agradecemos muito!", // Dia 25
+        "Seu sorriso é uma obra de arte. Nossa equipe trabalha com arte, técnica e paixão para protegê-lo.", // Dia 26
+        "Desejamos um 20XX de muita luz, sucesso e sorrisos, claro!", // Dia 27
+        "A dor de hoje se transforma na alegria de amanhã. Mantenha o foco no seu objetivo!", // Dia 28
+        "Que o seu sorriso seja a sua armadura de confiança em todos os seus desafios.", // Dia 29
+        "Obrigado por nos permitir cuidar da parte mais importante da sua comunicação: o seu sorriso.", // Dia 30
+        "O melhor investimento é aquele que fazemos em nossa própria saúde. Parabéns por se cuidar!", // Dia 31
+        "Desejamos a você e sua família um ano novo cheio de harmonia e muita saúde bucal!", // Dia 32
+        "Seja a mudança que você quer ver no seu sorriso. Estamos aqui para te apoiar em cada etapa.", // Dia 33
+        "A cada visita, um passo a mais na construção do seu sorriso perfeito. Estamos juntos!", // Dia 34
+        "Que o seu dia seja doce, mas não se esqueça da escovação! 😉", // Dia 35
+        "A nossa missão é eliminar o medo e substituí-lo pela confiança de sorrir livremente.", // Dia 36
+        "Sua dedicação aos cuidados pós-tratamento é exemplar. Você é um paciente nota 10!", // Dia 37
+        "Que a alegria do seu sorriso seja contagiante e ilumine a vida de quem está perto.", // Dia 38
+        "Obrigado por nos dar a honra de transformar a sua saúde bucal. É um prazer!", // Dia 39
+        "O segredo para um sorriso bonito é a persistência e o acompanhamento profissional.", // Dia 40
+        "Que o seu dia seja leve, sem dor e cheio de motivos para expressar sua felicidade.", // Dia 41
+        "A França Odontologia trabalha com excelência e carinho, pois você merece o melhor.", // Dia 42
+        "Seu sorriso é a nossa vitrine. Agradecemos por nos representar tão bem!", // Dia 43
+        "Acreditamos que a odontologia é a ponte entre a saúde e a autoestima. Avance com confiança!", // Dia 44
+        "Que a sua jornada seja abençoada com muito sucesso e momentos inesquecíveis.", // Dia 45
+        "Obrigado por nos escolher. Sua satisfação é o nosso combustível diário.", // Dia 46
+        "Mais do que técnicas, oferecemos um atendimento humanizado, focado em você.", // Dia 47
+        "Seu sorriso renovado é a nossa maior recompensa. Gratos por sua confiança!", // Dia 48
+        "Que a determinação que você tem para cuidar dos dentes te guie em todos os objetivos.", // Dia 49
+        "A França Odontologia deseja que a sua saúde seja completa: corpo, mente e sorriso!", // Dia 50
+        "Um sorriso é a coisa mais linda que você pode vestir. Use-o com orgulho!", // Dia 51
+        "Obrigado por nos dar a oportunidade de devolver a sua confiança para mastigar e falar.", // Dia 52
+        "Que o seu dia seja tão incrível quanto a sensação de dentes limpos e saudáveis.", // Dia 53
+        "Nossa equipe se empenha para que sua visita seja sempre confortável e acolhedora.", // Dia 54
+        "Sorrir não custa nada, mas vale muito. É um idioma universal da bondade.", // Dia 55
+        "A França Odontologia está sempre investindo em tecnologia para cuidar de você.", // Dia 56
+        "Que cada novo dia traga a certeza de que você está no caminho certo: o da saúde.", // Dia 57
+        "Obrigado por nos inspirar a buscar a excelência em cada detalhe do tratamento.", // Dia 58
+        "Acredite no seu sorriso. Ele é poderoso, único e feito para brilhar.", // Dia 59
+        "Você é um paciente especial! Agradecemos a fidelidade e o carinho.", // Dia 60
+        "Que o seu coração se encha de alegria pelas conquistas do seu sorriso.", // Dia 61
+        "A França Odontologia é mais que uma clínica, é um lar de sorrisos felizes.", // Dia 62
+        "Sua saúde bucal é um presente. Cuide dela com o mesmo zelo que cuidamos de você.", // Dia 63
+        "A cada consulta, um passo mais perto da sua melhor versão. Parabéns!", // Dia 64
+        "Obrigado por ser a prova de que nossa missão de transformar vidas vale a pena.", // Dia 65
+        "Que a paz esteja em sua boca e em seu coração. Sorria sempre!", // Dia 66
+        "Você nos ensina que a prevenção é o ato de amor mais importante.", // Dia 67
+        "Desejamos que sua vida seja tão organizada quanto a sua rotina de escovação!", // Dia 68
+        "A França Odontologia deseja um dia repleto de motivação e realizações.", // Dia 69
+        "O seu sorriso é o nosso maior caso de sucesso. Obrigado por confiar!", // Dia 70
+        "Agradecemos por nos permitir quebrar o mito do 'medo de dentista' com carinho.", // Dia 71
+        "Que você se sinta confiante e seguro(a) para sorrir em todas as ocasiões.", // Dia 72
+        "Seja um embaixador da saúde bucal. Seu sorriso inspira!", // Dia 73
+        "Lembre-se: o cuidado de hoje é o sorriso de amanhã. Não pare de se cuidar!", // Dia 74
+        "Nossa equipe é grata por ter você como parte do nosso propósito.", // Dia 75
+        "Que o seu dia seja leve e a sua gengiva, saudável. 😉", // Dia 76
+        "A França Odontologia: onde o profissionalismo encontra a sua satisfação.", // Dia 77
+        "Um sorriso bem cuidado é um convite silencioso à felicidade.", // Dia 78
+        "Obrigado por ser um paciente comprometido com a sua saúde. Isso faz a diferença!", // Dia 79
+        "Que o seu sorriso seja o reflexo da sua força e alegria de viver.", // Dia 80
+        "Acreditamos que a sua história de vida merece um sorriso de cinema. Conte conosco!", // Dia 81
+        "Sua confiança nos impulsiona a sermos ainda melhores. Nossa gratidão é eterna.", // Dia 82
+        "Que a sua jornada seja repleta de momentos de riso e felicidade genuína.", // Dia 83
+        "A França Odontologia deseja que a sua semana comece com um lindo sorriso!", // Dia 84
+        "Parabéns por cuidar de você. Seu investimento em saúde é admirável.", // Dia 85
+        "Que a sua saúde bucal seja um motivo de orgulho e autoconfiança.", // Dia 86
+        "Obrigado por nos escolher. Aqui, o seu bem-estar é a nossa prioridade.", // Dia 87
+        "Amo seu sorriso! (Esta frase foi enviada por toda a nossa equipe de coração).", // Dia 88
+        "Que você tenha um dia de paz e a certeza de um sorriso protegido.", // Dia 89
+        "A França Odontologia transforma desconforto em alívio e medo em gratidão.", // Dia 90
+        "Seu sorriso é a nossa maior realização profissional. Gratos!", // Dia 91
+        "Continue firme nos seus cuidados! O resultado de um sorriso saudável é duradouro.", // Dia 92
+        "Que você tenha a liberdade de comer tudo o que gosta, graças à sua saúde bucal.", // Dia 93
+        "Agradecemos o seu tempo e a sua paciência durante cada etapa do tratamento.", // Dia 94
+        "Desejamos que a sua vida seja cheia de sabor, sem dor ou sensibilidade.", // Dia 95
+        "Obrigado por nos permitir devolver a sua autoconfiança. É uma honra!", // Dia 96
+        "A França Odontologia é feita de sorrisos. O seu é o mais importante.", // Dia 97
+        "Que a sua jornada seja de luz e o seu sorriso, um farol de alegria.", // 98
+        "Você é o motivo pelo qual amamos a odontologia. Obrigado!", // 99
+        "Que cada dia seja um lembrete do quanto é importante sorrir.", // 100
+        "A França Odontologia: especialistas em sorrisos saudáveis e vidas felizes.", // 101
+        "Obrigado por confiar sua família a nós. Cuidamos de quem você ama.", // 102
+        "Que a sua gengiva seja firme e o seu sorriso, inabalável!", // 103
+        "O dentista é o artista que esculpe a sua alegria. Parabéns pela sua arte!", // 104
+        "A sua saúde bucal é um ato de amor-próprio. Pratique-o diariamente.", // 105
+        "Que você tenha um dia cheio de momentos que te façam sorrir à toa.", // 106
+        "A França Odontologia deseja que a sua vida seja um show de sorrisos!", // 107
+        "Sua confiança em nossa equipe é a nossa maior publicidade. Agradecemos!", // 108
+        "Mais do que cuidar de dentes, plantamos sementes de felicidade e bem-estar.", // 109
+        "Que a sua autoestima esteja nas alturas, impulsionada pelo seu novo sorriso.", // 110
+        "Obrigado por ser um paciente tão educado e atencioso com a nossa equipe.", // 111
+        "Que o seu sorriso seja a primeira coisa que você note no espelho hoje.", // 112
+        "A França Odontologia é o seu porto seguro para a saúde bucal. Volte sempre!", // 113
+        "Sua pontualidade é um gesto de respeito. Valorizamos isso imensamente.", // 114
+        "Que a sua vida seja uma sequência de boas notícias e sorrisos largos.", // 115
+        "Obrigado por nos permitir cuidar dos detalhes que fazem seu sorriso ser único.", // 116
+        "Acreditamos no seu potencial. Um sorriso confiante é o primeiro passo para o sucesso.", // 117
+        "Que a sua rotina de cuidados seja leve e o seu resultado, extraordinário.", // 118
+        "A França Odontologia deseja um dia com zero cáries e 100% de satisfação!", // 119
+        "Você é um paciente parceiro. Obrigado por seguir nossas orientações com disciplina.", // 120
+        "Que a sua vida seja cheia de sabor, sem dor ao comer ou beber.", // 121
+        "Seu sorriso é o nosso maior troféu. Cuidamos dele com todo o zelo.", // 122
+        "Agradecemos a paciência e a colaboração durante os procedimentos mais longos.", // 123
+        "Que a sua autoestima seja inabalável, refletida no brilho dos seus dentes.", // 124
+        "A França Odontologia: transformando medo em motivação para o cuidado.", // 125
+        "Obrigado por fazer do nosso consultório um lugar de confiança e alegria.", // 126
+        "Que você tenha a liberdade de rir alto, sem nenhuma preocupação.", // 127
+        "Você nos inspira a amar o que fazemos. Sua gratidão é a nossa força.", // 128
+        "Que a sua saúde bucal seja um exemplo de cuidado e dedicação.", // 129
+        "A França Odontologia deseja a você um final de semana relaxante e feliz.", // 130
+        "Seu sorriso é a chave para o seu bem-estar. Não o subestime!", // 131
+        "Obrigado por ser mais que um paciente: um amigo e um apoiador do nosso trabalho.", // 132
+        "Que a sua vida seja cheia de motivos para sorrir, e o seu sorriso, impecável.", // 133
+        "A França Odontologia se compromete com a sua felicidade em forma de sorriso.", // 134
+        "Parabéns por encarar o tratamento com coragem e determinação.", // 135
+        "Que a sua jornada seja de muito aprendizado e grandes conquistas.", // 136
+        "Obrigado por confiar em nossa especialização. A sua saúde é prioridade.", // 137
+        "A França Odontologia: onde a excelência encontra o seu sorriso.", // 138
+        "Que você tenha um dia de paz, sem dor e com a certeza de um sorriso cuidado.", // 139
+        "Seu sorriso é a melhor resposta para qualquer desafio. Use-o!", // 140
+        "Acreditamos que a prevenção é o melhor tratamento. Volte sempre!", // 141
+        "Obrigado por nos ensinar a sermos mais pacientes e detalhistas.", // 142
+        "Que a sua vida seja doce, mas seus dentes, fortes e protegidos.", // 143
+        "A França Odontologia se orgulha de ter você como nosso paciente.", // 144
+        "Seu sorriso é um presente que você dá ao mundo todos os dias.", // 145
+        "Que a sua autoestima cresça junto com a beleza do seu sorriso.", // 146
+        "Obrigado por nos permitir cuidar de quem mais importa: você.", // 147
+        "Acreditamos que a odontologia humanizada faz toda a diferença. Sinta-se em casa!", // 148
+        "Que você alcance seus objetivos com a confiança de um sorriso radiante.", // 149
+        "A França Odontologia deseja a você um dia de sorrisos espontâneos.", // 150
+        "Sua satisfação é a nossa missão cumprida. Obrigado pela preferência!", // 151
+        "Que o seu sorriso seja o reflexo da sua saúde e do seu bem-estar.", // 152
+        "Obrigado por nos escolher. Somos gratos pela sua fidelidade.", // 153
+        "A França Odontologia está aqui para te dar o sorriso que você sempre sonhou.", // 154
+        "Que a sua vida seja cheia de brilho, como o seu sorriso após a limpeza.", // 155
+        "Sua confiança nos inspira a ir além. Queremos o seu melhor resultado.", // 156
+        "Obrigado por ser um paciente que se cuida de verdade. Seu sorriso agradece!", // 157
+        "A França Odontologia: transformando vidas, um sorriso por vez.", // 158
+        "Que o seu sorriso seja a sua marca registrada, a mais bonita de todas.", // 159
+        "Sua dedicação ao tratamento é o seu maior investimento. Parabéns!", // 160
+        "Obrigado por nos permitir fazer parte da sua evolução. É um privilégio.", // 161
+        "Que a sua jornada seja leve, sem dor e cheia de novos motivos para sorrir.", // 162
+        "A França Odontologia deseja a você uma semana de sucesso e auto-cuidado.", // 163
+        "O seu sorriso é um tesouro. Nossa equipe é a guardiã dessa joia.", // 164
+        "Que você encontre a paz na certeza de que sua saúde está em boas mãos.", // 165
+        "Obrigado por nos dar a chance de te surpreender com a qualidade do nosso serviço.", // 166
+        "A França Odontologia: especialistas em devolver a alegria de sorrir.", // 167
+        "Que a sua vida seja cheia de luz, como a dos seus dentes após o clareamento.", // 168
+        "Sua coragem de cuidar da saúde nos motiva. Você é um exemplo!", // 169
+        "Obrigado por ser um paciente que entende a importância da prevenção.", // 170
+        "Que o seu sorriso seja um convite constante à felicidade e ao otimismo.", // 171
+        "A França Odontologia deseja que você sorria mais, hoje e sempre.", // 172
+        "A sua saúde começa pela boca. Parabéns por cuidar do seu sorriso!", // 173
+        "Obrigado por nos dar a oportunidade de sermos seus dentistas de confiança.", // 174
+        "Que você tenha a liberdade de ser quem você é, com um sorriso autêntico.", // 175
+        "A França Odontologia: seu sorriso é a nossa paixão, nossa arte e nossa ciência.", // 176
+        "Seu sorriso é a prova de que a dedicação traz resultados incríveis. Orgulho!", // 177
+        "Obrigado por nos inspirar com a sua história e a sua determinação.", // 178
+        "Que o seu dia seja cheio de boas notícias e sorrisos sinceros.", // 179
+        "A França Odontologia: aqui, cada detalhe do seu sorriso é importante.", // 180
+        "Que a sua saúde bucal seja a base para uma vida plena e feliz.", // 181
+        "Obrigado por nos escolher. Você fez a escolha certa para o seu sorriso.", // 182
+        "Que a sua jornada de tratamento seja suave e o resultado, espetacular.", // 183
+        "A França Odontologia deseja que a sua semana seja leve e o seu sorriso, radiante.", // 184
+        "Sua confiança é a base do nosso relacionamento. Valorizamos muito isso.", // 185
+        "Que o seu sorriso seja um ímã de boas energias e de felicidade.", // 186
+        "Obrigado por ser paciente e compreensivo(a) com a nossa equipe.", // 187
+        "A França Odontologia: transformando dentes em sonhos realizados.", // 188
+        "Que você tenha um dia de paz, sem dor e com a mente tranquila.", // 189
+        "O seu sorriso é a nossa missão de vida. Gratos por nos permitir exercê-la.", // 190
+        "Que a sua autoestima seja impulsionada pela beleza do seu sorriso.", // 191
+        "A França Odontologia: onde o seu sorriso encontra a excelência.", // 192
+        "Obrigado por ser o nosso maior motivo para sorrir e trabalhar com paixão.", // 193
+        "Que a sua jornada seja de muito sucesso e o seu sorriso, a sua maior conquista.", // 194
+        "Acreditamos que todo mundo merece um sorriso saudável. Você merece o seu!", // 195
+        "A França Odontologia deseja que a sua vida seja tão brilhante quanto seu sorriso.", // 196
+        "Obrigado por nos dar a oportunidade de sermos os guardiões do seu sorriso.", // 197
+        "Que o seu dia seja cheio de energia e o seu sorriso, revigorado.", // 198
+        "A sua saúde bucal é um reflexo do seu cuidado pessoal. Parabéns!", // 199
+        "A França Odontologia: seu sorriso é a nossa obra-prima favorita.", // 200
+        "Que a sua coragem de cuidar da saúde seja inspiração para outros.", // 201
+        "Obrigado por nos confiar a tarefa de cuidar de algo tão importante: o seu sorriso.", // 202
+        "Que a sua vida seja doce, mas o seu flúor, eficaz. 😉", // 203
+        "A França Odontologia deseja um dia de muita alegria e sorrisos espontâneos.", // 204
+        "Sua dedicação ao tratamento é a chave do sucesso. Continue assim!", // 205
+        "Obrigado por ser um paciente que valoriza a saúde e a qualidade.", // 206
+        "Que o seu sorriso seja a sua melhor expressão de felicidade e bem-estar.", // 207
+        "A França Odontologia: o seu sorriso é o nosso maior presente.", // 208
+        "Que a sua jornada seja de muito aprendizado e de resultados duradouros.", // 209
+        "Obrigado por nos permitir fazer parte da sua transformação. É uma honra!", // 210
+        "Acreditamos no seu sorriso. Ele é forte, saudável e cheio de potencial.", // 211
+        "A França Odontologia deseja a você um final de semana de descanso e sorrisos.", // 212
+        "Sua confiança é o nosso maior incentivo para buscar a excelência.", // 213
+        "Que o seu sorriso seja a sua maior arma contra a tristeza.", // 214
+        "Obrigado por ser um paciente tão atencioso e gentil com a nossa equipe.", // 215
+        "A França Odontologia: cuidamos do seu sorriso com o mesmo carinho que você tem por ele.", // 216
+        "Que a sua vida seja cheia de sabor, sem dor, e com muita saúde bucal.", // 217
+        "Seu sorriso é o que nos move e nos motiva a cada manhã. Gratos!", // 218
+        "Obrigado por nos dar a oportunidade de sermos seus guias na saúde bucal.", // 219
+        "A França Odontologia deseja que a sua rotina seja de sucesso e de sorrisos!", // 220
+        "Que o seu sorriso seja a primeira coisa que você percebe ao acordar: bonito e saudável.", // 221
+        "Sua saúde bucal é um ato de amor-próprio. Pratique-o sempre!", // 222
+        "Obrigado por confiar em nosso trabalho e em nossa experiência.", // 223
+        "A França Odontologia: transformando medo em motivação para o cuidado.", // 224
+        "Que o seu dia seja leve, sem dor e cheio de boas surpresas.", // 225
+        "Seu sorriso é a nossa maior satisfação profissional. Continue brilhando!", // 226
+        "Obrigado por ser um paciente que valoriza a qualidade e a dedicação.", // 227
+        "A França Odontologia deseja que a sua vida seja cheia de conquistas e sorrisos.", // 228
+        "Que a sua jornada seja de muito aprendizado e o seu sorriso, cada vez mais lindo.", // 229
+        "Obrigado por nos permitir fazer parte da sua história de sucesso.", // 230
+        "Acreditamos que o seu sorriso é a chave para a sua felicidade. Use-a!", // 231
+        "A França Odontologia: especialistas em fazer você sorrir sem medo.", // 232
+        "Que o seu dia seja cheio de energia e o seu sorriso, contagiante.", // 233
+        "Sua confiança nos inspira a sermos melhores a cada consulta. Obrigado!", // 234
+        "Que a sua saúde bucal seja um motivo de orgulho e autoconfiança.", // 235
+        "A França Odontologia deseja que a sua semana seja leve e produtiva.", // 236
+        "Obrigado por ser um paciente que se cuida de verdade. Seu sorriso agradece!", // 237
+        "Que o seu sorriso seja a sua melhor arma contra o estresse e a tristeza.", // 238
+        "Acreditamos na odontologia humanizada. Seu bem-estar é prioridade.", // 239
+        "A França Odontologia: onde o seu sorriso encontra o cuidado que ele merece.", // 240
+        "Sua dedicação ao tratamento é exemplar. Você é um paciente nota 10!", // 241
+        "Que o seu dia seja cheio de boas notícias e sorrisos sinceros.", // 242
+        "Obrigado por nos permitir fazer parte da sua evolução. É um prazer!", // 243
+        "A França Odontologia deseja que a sua vida seja um show de sorrisos!", // 244
+        "Que você tenha a liberdade de comer tudo o que gosta, graças à sua saúde bucal.", // 245
+        "Seu sorriso é a nossa maior motivação para buscar a excelência.", // 246
+        "Obrigado por ser um paciente que inspira a nossa equipe com sua confiança.", // 247
+        "A França Odontologia: transformando sorrisos e mudando vidas.", // 248
+        "Que a sua jornada seja de luz e o seu sorriso, um farol de alegria.", // 249
+        "Acreditamos que a sua história merece um sorriso radiante. Conte conosco!", // 250
+        "A França Odontologia deseja que o seu sorriso seja o reflexo da sua alma.", // 251
+        "Sua saúde bucal é um presente que você dá a si mesmo(a). Parabéns!", // 252
+        "Obrigado por nos dar a honra de transformar a sua saúde e autoestima.", // 253
+        "Que o seu dia seja tão incrível quanto a sensação de dentes limpos e saudáveis.", // 254
+        "A França Odontologia: a sua melhor escolha para um sorriso perfeito.", // 255
+        "Que você tenha a certeza de um sorriso protegido e bem cuidado.", // 256
+        "Obrigado por ser um paciente que valoriza a prevenção e o cuidado.", // 257
+        "A França Odontologia deseja que a sua vida seja cheia de sabor e sem dor.", // 258
+        "Que o seu sorriso seja a sua marca registrada, a mais bonita de todas.", // 259
+        "Sua confiança é o nosso maior incentivo para ir além. Gratos!", // 260
+        "Obrigado por nos permitir cuidar dos detalhes que fazem seu sorriso ser único.", // 261
+        "A França Odontologia: especialistas em sorrisos autênticos e felizes.", // 262
+        "Que a sua jornada seja de muito aprendizado e de resultados duradouros.", // 263
+        "Obrigado por nos escolher. Sua satisfação é a nossa maior recompensa.", // 264
+        "Que o seu sorriso seja a sua melhor expressão de felicidade.", // 265
+        "A França Odontologia deseja que a sua semana comece com um lindo sorriso!", // 266
+        "Sua saúde bucal é um ato de amor-próprio. Invista nela!", // 267
+        "Obrigado por nos dar a oportunidade de sermos seus dentistas de confiança.", // 268
+        "Que você tenha a liberdade de rir alto, sem nenhuma preocupação.", // 269
+        "A França Odontologia: transformando medo em motivação para o cuidado.", // 270
+        "Seu sorriso é a prova de que a dedicação traz resultados incríveis.", // 271
+        "Obrigado por nos inspirar com a sua história e a sua determinação.", // 272
+        "Que o seu dia seja cheio de boas notícias e sorrisos sinceros.", // 273
+        "A França Odontologia: aqui, o seu sorriso é a nossa missão.", // 274
+        "Que a sua vida seja cheia de luz, como a dos seus dentes após o tratamento.", // 275
+        "Sua coragem de cuidar da saúde nos motiva. Você é um exemplo!", // 276
+        "Obrigado por ser um paciente que entende a importância da prevenção.", // 277
+        "Que o seu sorriso seja um convite constante à felicidade e ao otimismo.", // 278
+        "A França Odontologia deseja que você sorria mais, hoje e sempre.", // 279
+        "A sua saúde começa pela boca. Parabéns por cuidar do seu sorriso!", // 280
+        "Obrigado por nos dar a oportunidade de sermos seus dentistas de confiança.", // 281
+        "Que você tenha a liberdade de ser quem você é, com um sorriso autêntico.", // 282
+        "A França Odontologia: seu sorriso é a nossa paixão, nossa arte e nossa ciência.", // 283
+        "Seu sorriso é a prova de que a dedicação traz resultados incríveis. Orgulho!", // 284
+        "Obrigado por nos inspirar com a sua história e a sua determinação.", // 285
+        "Que o seu dia seja cheio de boas notícias e sorrisos sinceros.", // 286
+        "A França Odontologia: aqui, cada detalhe do seu sorriso é importante.", // 287
+        "Que a sua saúde bucal seja a base para uma vida plena e feliz.", // 288
+        "Obrigado por nos escolher. Você fez a escolha certa para o seu sorriso.", // 289
+        "Que a sua jornada de tratamento seja suave e o resultado, espetacular.", // 290
+        "A França Odontologia deseja que a sua semana seja leve e o seu sorriso, radiante.", // 291
+        "Sua confiança é a base do nosso relacionamento. Valorizamos muito isso.", // 292
+        "Que o seu sorriso seja um ímã de boas energias e de felicidade.", // 293
+        "Obrigado por ser paciente e compreensivo(a) com a nossa equipe.", // 294
+        "A França Odontologia: transformando dentes em sonhos realizados.", // 295
+        "Que você tenha um dia de paz, sem dor e com a mente tranquila.", // 296
+        "O seu sorriso é a nossa missão de vida. Gratos por nos permitir exercê-la.", // 297
+        "Que a sua autoestima seja impulsionada pela beleza do seu sorriso.", // 298
+        "A França Odontologia: onde o seu sorriso encontra a excelência.", // 299
+        "Obrigado por ser o nosso maior motivo para sorrir e trabalhar com paixão.", // 300
+        "Que a sua jornada seja de muito sucesso e o seu sorriso, a sua maior conquista.", // 301
+        "Acreditamos que todo mundo merece um sorriso saudável. Você merece o seu!", // 302
+        "A França Odontologia deseja que a sua vida seja tão brilhante quanto seu sorriso.", // 303
+        "Obrigado por nos dar a oportunidade de sermos os guardiões do seu sorriso.", // 304
+        "Que o seu dia seja cheio de energia e o seu sorriso, revigorado.", // 305
+        "A sua saúde bucal é um reflexo do seu cuidado pessoal. Parabéns!", // 306
+        "A França Odontologia: seu sorriso é a nossa obra-prima favorita.", // 307
+        "Que a sua coragem de cuidar da saúde seja inspiração para outros.", // 308
+        "Obrigado por nos confiar a tarefa de cuidar de algo tão importante: o seu sorriso.", // 309
+        "Que a sua vida seja doce, mas o seu flúor, eficaz. 😉", // 310
+        "A França Odontologia deseja um dia de muita alegria e sorrisos espontâneos.", // 311
+        "Sua dedicação ao tratamento é a chave do sucesso. Continue assim!", // 312
+        "Obrigado por ser um paciente que valoriza a saúde e a qualidade.", // 313
+        "Que o seu sorriso seja a sua melhor expressão de felicidade e bem-estar.", // 314
+        "A França Odontologia: o seu sorriso é o nosso maior presente.", // 315
+        "Que a sua jornada seja de muito aprendizado e de resultados duradouros.", // 316
+        "Obrigado por nos permitir fazer parte da sua transformação. É uma honra!", // 317
+        "Acreditamos no seu sorriso. Ele é forte, saudável e cheio de potencial.", // 318
+        "A França Odontologia deseja a você um final de semana de descanso e sorrisos.", // 319
+        "Sua confiança é o nosso maior incentivo para buscar a excelência.", // 320
+        "Que o seu sorriso seja a sua maior arma contra a tristeza.", // 321
+        "Obrigado por ser um paciente tão atencioso e gentil com a nossa equipe.", // 322
+        "A França Odontologia: cuidamos do seu sorriso com o mesmo carinho que você tem por ele.", // 323
+        "Que a sua vida seja cheia de sabor, sem dor, e com muita saúde bucal.", // 324
+        "Seu sorriso é o que nos move e nos motiva a cada manhã. Gratos!", // 325
+        "Obrigado por nos dar a oportunidade de sermos seus guias na saúde bucal.", // 326
+        "A França Odontologia deseja que a sua rotina seja de sucesso e de sorrisos!", // 327
+        "Que o seu sorriso seja a primeira coisa que você percebe ao acordar: bonito e saudável.", // 328
+        "Sua saúde bucal é um ato de amor-próprio. Pratique-o sempre!", // 329
+        "Obrigado por confiar em nosso trabalho e em nossa experiência.", // 330
+        "A França Odontologia: transformando medo em motivação para o cuidado.", // 331
+        "Que o seu dia seja leve, sem dor e cheio de boas surpresas.", // 332
+        "Seu sorriso é a nossa maior satisfação profissional. Continue brilhando!", // 333
+        "Obrigado por ser um paciente que valoriza a qualidade e a dedicação.", // 334
+        "A França Odontologia deseja que a sua vida seja cheia de conquistas e sorrisos.", // 335
+        "Que a sua jornada seja de muito aprendizado e o seu sorriso, cada vez mais lindo.", // 336
+        "Obrigado por nos permitir fazer parte da sua história de sucesso.", // 337
+        "Acreditamos que o seu sorriso é a chave para a sua felicidade. Use-a!", // 338
+        "A França Odontologia: especialistas em fazer você sorrir sem medo.", // 339
+        "Que o seu dia seja cheio de energia e o seu sorriso, contagiante.", // 340
+        "Sua confiança nos inspira a sermos melhores a cada consulta. Obrigado!", // 341
+        "Que a sua saúde bucal seja um motivo de orgulho e autoconfiança.", // 342
+        "A França Odontologia deseja que a sua semana seja leve e produtiva.", // 343
+        "Obrigado por ser um paciente que se cuida de verdade. Seu sorriso agradece!", // 344
+        "Que o seu sorriso seja a sua melhor arma contra o estresse e a tristeza.", // 345
+        "Acreditamos na odontologia humanizada. Seu bem-estar é prioridade.", // 346
+        "A França Odontologia: onde o seu sorriso encontra o cuidado que ele merece.", // 347
+        "Sua dedicação ao tratamento é exemplar. Você é um paciente nota 10!", // 348
+        "Que o seu dia seja cheio de boas notícias e sorrisos sinceros.", // 349
+        "Obrigado por nos permitir fazer parte da sua evolução. É um prazer!", // 350
+        "A França Odontologia deseja que a sua vida seja um show de sorrisos!", // 351
+        "Que você tenha a liberdade de comer tudo o que gosta, graças à sua saúde bucal.", // 352
+        "Seu sorriso é a nossa maior motivação para buscar a excelência.", // 353
+        "Obrigado por ser um paciente que inspira a nossa equipe com sua confiança.", // 354
+        "A França Odontologia: transformando sorrisos e mudando vidas.", // 355
+        "Que a sua jornada seja de luz e o seu sorriso, um farol de alegria.", // 356
+        "Acreditamos que a sua história merece um sorriso radiante. Conte conosco!", // 357
+        "A França Odontologia deseja que o seu sorriso seja o reflexo da sua alma.", // 358
+        "Sua saúde bucal é um presente que você dá a si mesmo(a). Parabéns!", // 359
+        "Obrigado por nos dar a honra de transformar a sua saúde e autoestima.", // 360
+        "Que o seu dia seja tão incrível quanto a sensação de dentes limpos e saudáveis.", // 361
+        "A França Odontologia: a sua melhor escolha para um sorriso perfeito.", // 362
+        "Que você tenha a certeza de um sorriso protegido e bem cuidado.", // 363
+        "Obrigado por ser um paciente que valoriza a prevenção e o cuidado.", // 364
+        "França Odontologia: Feliz Natal e um Ano Novo de muitos sorrisos para você e sua família. Nossa gratidão eterna pela sua confiança!", // 365
+    ];
+
+    // --- LÓGICA DE EXIBIÇÃO ---
+    function exibirMensagem() {
+        const nomeParaExibir = nomeDoPresenteado.trim();
+
+        if (!nomeParaExibir) {
+            document.getElementById('mensagem').innerHTML = "ERRO: Por favor, preencha o nome na Linha 6 do script antes de salvar o arquivo!";
+            document.getElementById('dia-do-ano').innerText = "Personalização Necessária";
+            return;
+        }
+
+        const agora = new Date();
+        const inicioDoAno = new Date(agora.getFullYear(), 0, 1);
+        const diferencaEmMilissegundos = agora - inicioDoAno;
+        const umDiaEmMilissegundos = 1000 * 60 * 60 * 24; 
+        
+        // Corrigindo para o último dia do ano, se necessário.
+        let diaDoAno = Math.floor(diferencaEmMilissegundos / umDiaEmMilissegundos) + 1;
+        
+        const indiceDaFrase = (diaDoAno - 1) % frasesOdontologia.length;
+
+        const fraseDoDia = frasesOdontologia[indiceDaFrase] || "Seu sorriso é o nosso maior presente! Gratos pela sua confiança.";
+
+        const mensagemCompleta = `${nomeParaExibir}, ${fraseDoDia}`;
+
+        document.getElementById('mensagem').innerText = mensagemCompleta;
+        document.getElementById('dia-do-ano').innerText = `Mensagem do Dia ${diaDoAno}`;
+    }
+
+    exibirMensagem();
+</script>
+
+</body>
+</html>
